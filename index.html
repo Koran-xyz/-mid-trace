@@ -6,217 +6,70 @@
 <meta name="theme-color" content="#0f1117">
 <title>MID.Trace</title>
 <style>
-:root{
-  --bg:#0f1117;--panel:#181b24;--panel2:#10131a;--gold:#f3c86b;
-  --text:#f8f4eb;--muted:rgba(255,255,255,.62);--line:rgba(255,255,255,.10);
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-body{
-  background:
-    radial-gradient(circle at 10% 0,rgba(243,200,107,.08),transparent 28%),
-    radial-gradient(circle at 90% 95%,rgba(92,105,255,.10),transparent 30%),
-    var(--bg);
-}
-button,input{font:inherit}
-button{cursor:pointer}
-.wrap{max-width:980px;margin:auto;padding:18px}
-.brand{font-size:12px;letter-spacing:.22em;font-weight:900;color:var(--gold)}
-h1{font-size:30px;margin:5px 0}
-.lead{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:18px}
-.step{margin:0 0 10px;font-size:13px;font-weight:900;color:var(--gold)}
-.upload{
-  position:relative;height:230px;border:1px dashed rgba(255,255,255,.25);border-radius:18px;
-  overflow:hidden;background:var(--panel2);display:flex;align-items:center;justify-content:center;text-align:center
-}
-.upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
-.upload img{width:100%;height:100%;object-fit:contain;background:#0b0d12}
-.empty{font-size:14px;line-height:1.8;color:var(--muted);padding:20px}
-.badge{display:inline-block;margin-top:7px;border-radius:999px;padding:5px 9px;background:rgba(243,200,107,.10);color:var(--gold);font-size:11px;font-weight:800}
-.section{margin-top:16px}
-.options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.opt{
-  border:1px solid var(--line);background:var(--panel2);color:var(--muted);
-  border-radius:12px;padding:11px 8px;font-size:12px;font-weight:800
-}
-.opt.active{border-color:var(--gold);background:rgba(243,200,107,.10);color:var(--gold)}
-.full{grid-column:1/-1}
-.make{
-  width:100%;border:0;border-radius:14px;padding:14px 16px;margin-top:16px;
-  background:var(--gold);color:#161616;font-size:15px;font-weight:900
-}
-.make:disabled{opacity:.42;cursor:not-allowed}
-.output{background:#f5f1e8;color:#171717}
-.prompt{
-  min-height:220px;margin-top:10px;padding:14px;border-radius:15px;background:#e9e1d4;
-  white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.7
-}
-.copy{
-  width:100%;border:0;border-radius:13px;padding:13px 16px;margin-top:10px;
-  background:#171717;color:#f8f4eb;font-weight:900
-}
-.note{font-size:12px;line-height:1.6;color:#6d665e;margin-top:8px}
-.ready{font-size:12px;color:#a9eebd;font-weight:800;margin-top:8px}
-@media(max-width:760px){
-  .grid{grid-template-columns:1fr}
-  .full{grid-column:auto}
-  .options{grid-template-columns:repeat(2,1fr)}
-}
+:root{--bg:#0f1117;--panel:#181b24;--panel2:#10131a;--gold:#f3c86b;--text:#f8f4eb;--muted:rgba(255,255,255,.62);--line:rgba(255,255,255,.10)}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{min-height:100vh;background:radial-gradient(circle at 10% 0,rgba(243,200,107,.08),transparent 28%),radial-gradient(circle at 90% 95%,rgba(92,105,255,.10),transparent 30%),var(--bg)}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1040px;margin:auto;padding:18px}.topline{display:flex;align-items:center;gap:8px}.brand{font-size:12px;letter-spacing:.22em;font-weight:900;color:var(--gold)}.version{font-size:10px;font-weight:900;color:#111;background:var(--gold);border-radius:999px;padding:3px 7px}h1{font-size:30px;margin:5px 0}.lead{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:18px}.step{margin:0 0 10px;font-size:13px;font-weight:900;color:var(--gold)}.upload{position:relative;height:230px;border:1px dashed rgba(255,255,255,.25);border-radius:18px;overflow:hidden;background:var(--panel2);display:flex;align-items:center;justify-content:center;text-align:center}.upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.upload img{width:100%;height:100%;object-fit:contain;background:#0b0d12}.empty{font-size:14px;line-height:1.8;color:var(--muted);padding:20px}.badge{display:inline-block;margin-top:7px;border-radius:999px;padding:5px 9px;background:rgba(243,200,107,.10);color:var(--gold);font-size:11px;font-weight:800}.section{margin-top:16px}.hint{font-size:11px;color:var(--muted);line-height:1.5;margin:-4px 0 8px}.options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.opt{border:1px solid var(--line);background:var(--panel2);color:var(--muted);border-radius:12px;padding:11px 8px;font-size:12px;font-weight:800;min-height:42px}.opt.active{border-color:var(--gold);background:rgba(243,200,107,.10);color:var(--gold)}.full{grid-column:1/-1}.make{width:100%;border:0;border-radius:14px;padding:14px 16px;margin-top:18px;background:var(--gold);color:#161616;font-size:15px;font-weight:900}.make:disabled{opacity:.42;cursor:not-allowed}.output{background:#f5f1e8;color:#171717}.prompt{min-height:230px;margin-top:10px;padding:14px;border-radius:15px;background:#e9e1d4;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.7}.copy{width:100%;border:0;border-radius:13px;padding:13px 16px;margin-top:10px;background:#171717;color:#f8f4eb;font-weight:900}.note{font-size:12px;line-height:1.6;color:#6d665e;margin-top:8px}.ready{font-size:12px;color:#a9eebd;font-weight:800;margin-top:8px}.rule{margin-top:14px;padding:10px 12px;border-radius:12px;background:rgba(243,200,107,.07);border:1px solid rgba(243,200,107,.16);font-size:11px;line-height:1.6;color:rgba(255,255,255,.72)}@media(max-width:760px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.options{grid-template-columns:repeat(2,1fr)}h1{font-size:27px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="brand">MID.TRACE</div>
-  <h1>2枚から、意外性のあるアートへ</h1>
-  <div class="lead">
-    1枚目は「絵の世界」。2枚目は「輪郭」。文章を書かず、選ぶだけでMidjourney用プロンプトを作ります。
-  </div>
-
-  <div class="grid">
-    <section class="card">
-      <p class="step">01 / 1枚目：ベース画像</p>
-      <div class="upload">
-        <div id="empty1" class="empty">タップして画像を選ぶ<br><span class="badge">作品の土台</span></div>
-        <img id="preview1" hidden alt="1枚目のプレビュー">
-        <input id="file1" type="file" accept="image/*">
-      </div>
-
-      <div class="section">
-        <p class="step">画風</p>
-        <div class="options" id="paintGroup">
-          <button class="opt active" data-value="rich oil painting">油絵</button>
-          <button class="opt" data-value="delicate watercolor painting">水彩画</button>
-          <button class="opt" data-value="layered acrylic painting">アクリル</button>
-          <button class="opt" data-value="expressive Japanese sumi-e ink painting">墨絵</button>
-          <button class="opt" data-value="detailed colored-pencil illustration">色鉛筆</button>
-          <button class="opt" data-value="soft pastel artwork">パステル</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <p class="step">02 / 2枚目：輪郭画像</p>
-      <div class="upload">
-        <div id="empty2" class="empty">タップして画像を選ぶ<br><span class="badge">輪郭として使う</span></div>
-        <img id="preview2" hidden alt="2枚目のプレビュー">
-        <input id="file2" type="file" accept="image/*">
-      </div>
-
-      <div class="section">
-        <p class="step">輪郭の表現</p>
-        <div class="options" id="contourGroup">
-          <button class="opt active" data-value="cracked-glass fracture lines">ガラスのひび</button>
-          <button class="opt" data-value="thin intertwined string lines">紐</button>
-          <button class="opt" data-value="concentric water-ripple lines">水の波紋</button>
-          <button class="opt" data-value="organic creeping vine lines">蔦</button>
-          <button class="opt" data-value="fine lightning-like energy cracks">稲妻</button>
-          <button class="opt" data-value="luminous neon contour lines">ネオン</button>
-          <button class="opt" data-value="flowing ink contour lines">インク</button>
-        </div>
-      </div>
-
-      <div class="section">
-        <p class="step">輪郭の強さ</p>
-        <div class="options" id="strengthGroup">
-          <button class="opt" data-value="subtle and partially hidden">弱</button>
-          <button class="opt active" data-value="clearly visible but naturally integrated">中</button>
-          <button class="opt" data-value="bold and unmistakable while still artistic">強</button>
-        </div>
-      </div>
-
-      <button id="makeBtn" class="make" disabled>プロンプト生成</button>
-      <div id="ready" class="ready"></div>
-    </section>
-
-    <section class="card output full">
-      <p class="step" style="color:#735a1d">03 / Midjourney用プロンプト</p>
-      <div id="prompt" class="prompt">画像を2枚選ぶと作れます。</div>
-      <button id="copyBtn" class="copy" disabled>コピー</button>
-      <div class="note">
-        Midjourney側でも同じ2枚の画像を参照画像として入れて、このプロンプトを貼ります。
-      </div>
-    </section>
-  </div>
-</div>
-
+<div class="topline"><div class="brand">MID.TRACE</div><div class="version">v0.2</div></div>
+<h1>2枚から、意外性のあるアートへ</h1>
+<div class="lead">1枚目は「主役の世界」。2枚目は「輪郭の存在」。画風・輪郭素材・透明感・奥行きを選ぶだけで、Midjourney用プロンプトを作ります。</div>
+<div class="grid">
+<section class="card">
+<p class="step">01 / 1枚目：ベース画像</p>
+<div class="upload"><div id="empty1" class="empty">タップして画像を選ぶ<br><span class="badge">作品の主役</span></div><img id="preview1" hidden alt="1枚目のプレビュー"><input id="file1" type="file" accept="image/*"></div>
+<div class="section"><p class="step">画風 / 素材</p><div class="hint">写真風以外は、元画像をしっかり変換する強め設定。</div><div class="options" id="paintGroup">
+<button class="opt active" data-key="photo">写真風</button><button class="opt" data-key="oil">油絵</button><button class="opt" data-key="watercolor">水彩画</button><button class="opt" data-key="acrylic">アクリル</button><button class="opt" data-key="sumi">墨絵</button><button class="opt" data-key="pencil">色鉛筆</button><button class="opt" data-key="pastel">パステル</button><button class="opt" data-key="brick">レンガ</button><button class="opt" data-key="tile">タイル</button>
+</div></div>
+</section>
+<section class="card">
+<p class="step">02 / 2枚目：輪郭画像</p>
+<div class="upload"><div id="empty2" class="empty">タップして画像を選ぶ<br><span class="badge">輪郭線だけを使う</span></div><img id="preview2" hidden alt="2枚目のプレビュー"><input id="file2" type="file" accept="image/*"></div>
+<div class="section"><p class="step">輪郭の表現</p><div class="hint">2枚目そのものは出さず、外周と重要な内部線だけを使う。</div><div class="options" id="contourGroup">
+<button class="opt active" data-key="photo">写真風</button><button class="opt" data-key="glass">ガラスのひび</button><button class="opt" data-key="string">紐</button><button class="opt" data-key="vine">蔦</button><button class="opt" data-key="lightning">稲妻</button><button class="opt" data-key="neon">ネオン</button><button class="opt" data-key="ink">インク</button>
+</div></div>
+<div class="section"><p class="step">透明感</p><div class="options" id="opacityGroup"><button class="opt active" data-key="clear">鮮明</button><button class="opt" data-key="light">やや透明</button><button class="opt" data-key="translucent">半透明</button><button class="opt" data-key="frosted">曇りガラス風</button></div></div>
+<div class="section"><p class="step">位置関係</p><div class="hint">1枚目に対して、2枚目の輪郭をどの奥行きに置くか。</div><div class="options" id="depthGroup"><button class="opt" data-key="back">奥</button><button class="opt active" data-key="same">同じ位置</button><button class="opt" data-key="middle">中間</button><button class="opt" data-key="front">手前</button></div></div>
+<div class="section"><p class="step">輪郭の強さ</p><div class="options" id="strengthGroup"><button class="opt" data-key="weak">弱</button><button class="opt active" data-key="medium">中</button><button class="opt" data-key="strong">強</button></div></div>
+<div class="rule">2枚目は「全面エフェクト」にしない。輪郭線だけを素材化し、1枚目の作品の中へ薄く統合する。</div>
+<button id="makeBtn" class="make" disabled>プロンプト生成</button><div id="ready" class="ready"></div>
+</section>
+<section class="card output full"><p class="step" style="color:#735a1d">03 / Midjourney用プロンプト</p><div id="prompt" class="prompt">画像を2枚選ぶと作れます。</div><button id="copyBtn" class="copy" disabled>コピー</button><div class="note">Midjourney側でも同じ2枚の画像を参照画像として入れて、このプロンプトを貼ります。</div></section>
+</div></div>
 <script>
 (() => {
-  const $ = (id) => document.getElementById(id);
-
-  let has1 = false;
-  let has2 = false;
-  let paint = "rich oil painting";
-  let contour = "cracked-glass fracture lines";
-  let strength = "clearly visible but naturally integrated";
-
-  function wireGroup(id, setter) {
-    const group = $(id);
-    group.querySelectorAll(".opt").forEach(btn => {
-      btn.addEventListener("click", () => {
-        group.querySelectorAll(".opt").forEach(x => x.classList.remove("active"));
-        btn.classList.add("active");
-        setter(btn.dataset.value);
-      });
-    });
-  }
-
-  wireGroup("paintGroup", v => paint = v);
-  wireGroup("contourGroup", v => contour = v);
-  wireGroup("strengthGroup", v => strength = v);
-
-  function loadImage(fileInput, preview, empty, which) {
-    const file = fileInput.files && fileInput.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      preview.src = reader.result;
-      preview.hidden = false;
-      empty.hidden = true;
-      if (which === 1) has1 = true; else has2 = true;
-      updateReady();
-    };
-    reader.readAsDataURL(file);
-  }
-
-  $("file1").addEventListener("change", () => loadImage($("file1"), $("preview1"), $("empty1"), 1));
-  $("file2").addEventListener("change", () => loadImage($("file2"), $("preview2"), $("empty2"), 2));
-
-  function updateReady() {
-    const ok = has1 && has2;
-    $("makeBtn").disabled = !ok;
-    $("ready").textContent = ok ? "✓ 2枚そろった。生成できます。" : "";
-  }
-
-  function buildPrompt() {
-    return [
-      "Create one unified fine-art composition using two image references.",
-      `Use Image 1 as the main subject, composition, color structure, and visual foundation. Reinterpret Image 1 as a ${paint}.`,
-      "Use Image 2 only as a contour and silhouette reference. Do not place Image 2 as a separate subject and do not make a simple collage.",
-      `Transform the recognizable outer contour and important internal contour lines of Image 2 into ${contour}.`,
-      `Integrate those contour lines across the surface of the Image 1 artwork. The contour presence should be ${strength}.`,
-      "At first glance, the viewer should mainly see the artwork based on Image 1. On closer inspection, the form from Image 2 should emerge through the contour material.",
-      "Keep both visual ideas unified as a single artwork.",
-      "No text, no logo, no split screen, no collage panels, no duplicated subjects, no obvious cut-and-paste effect."
-    ].join(" ");
-  }
-
-  $("makeBtn").addEventListener("click", () => {
-    $("prompt").textContent = buildPrompt();
-    $("copyBtn").disabled = false;
-  });
-
-  $("copyBtn").addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText($("prompt").textContent);
-      const old = $("copyBtn").textContent;
-      $("copyBtn").textContent = "コピーしました";
-      setTimeout(() => $("copyBtn").textContent = old, 1300);
-    } catch {
-      alert("長押しでプロンプトをコピーしてください。");
-    }
-  });
+const $ = id => document.getElementById(id);
+const paintProfiles={
+photo:"keep Image 1 strongly photorealistic and camera-real, preserving natural lighting, realistic materials, depth, fine detail, and believable texture",
+oil:"strongly reinterpret Image 1 as a dramatic impasto oil painting with unmistakable brushstrokes, layered pigment, painterly edges, canvas texture, and rich hand-painted depth",
+watercolor:"strongly reinterpret Image 1 as a true watercolor artwork with visible washes, pigment blooms, soft bleeding edges, paper texture, layered transparency, and hand-painted tonal variation",
+acrylic:"strongly reinterpret Image 1 as a layered acrylic painting with bold opaque strokes, palette-knife texture, visible paint buildup, graphic color blocking, and a clearly painted surface",
+sumi:"strongly reinterpret Image 1 as expressive Japanese sumi-e with decisive black ink brushwork, dry-brush texture, ink diffusion, controlled negative space, and handmade washi character",
+pencil:"strongly reinterpret Image 1 as a detailed colored-pencil artwork with visible pencil strokes, cross-hatching, layered waxy pigment, textured paper, and hand-drawn shading",
+pastel:"strongly reinterpret Image 1 as a soft pastel artwork with powdery pigment, blended edges, chalk texture, visible pastel marks, and rich handmade color transitions",
+brick:"strongly reconstruct Image 1 as a contemporary brick-relief artwork: the scene and subject remain recognizable but are visibly formed through brick surfaces, mortar joints, masonry rhythm, relief depth, and architectural material texture",
+tile:"strongly reconstruct Image 1 as a ceramic tile mosaic artwork: the scene and subject remain recognizable but are visibly formed through individual tiles, grout lines, glazed ceramic texture, mosaic segmentation, and handcrafted surface variation"};
+const contourProfiles={
+photo:"a photorealistic traced contour made only from subtle real-world highlight and shadow lines, crisp edge cues, and thin realistic surface reflections",
+glass:"thin cracked-glass fracture lines that follow the contour paths precisely, with delicate refraction and restrained highlights",
+string:"thin intertwined string and thread lines that trace the contour paths precisely, with tactile fiber detail",
+vine:"slender organic creeping-vine lines that trace the contour paths precisely, with restrained leaves and natural curvature",
+lightning:"fine lightning-like energy cracks that trace the contour paths precisely, controlled and localized to the silhouette",
+neon:"luminous neon contour lines that trace the contour paths precisely, with controlled glow and no large filled neon shapes",
+ink:"flowing hand-drawn ink contour lines that trace the silhouette precisely, with expressive line-weight variation and no filled duplicate subject"};
+const opacityProfiles={clear:"Keep the contour crisp, clean, and clearly legible, with sharp edges and only minimal see-through quality",light:"Make the contour slightly transparent so Image 1 remains dominant through and around the lines",translucent:"Make the contour semi-transparent and airy, clearly present but visually blended into Image 1",frosted:"Give the contour a frosted-glass translucency with softened diffusion, subtle haze, and diffused highlights while keeping the silhouette readable"};
+const depthProfiles={back:"Place the contour layer behind the main Image 1 subject as a distant background layer. Keep the main subject unobstructed and clearly in front",same:"Place the contour layer on the same visual plane as Image 1's main subject, interwoven with the artwork surface without becoming a second full subject",middle:"Place the contour layer in the middle ground, spatially between the foreground and background elements of Image 1, with clear but natural separation",front:"Place the contour layer in front of Image 1 like a transparent foreground veil. Use contour lines only and do not obscure or replace the main subject"};
+const strengthProfiles={weak:"Keep the contour presence subtle, sparse, and partially hidden",medium:"Keep the contour clearly readable but naturally integrated and secondary to Image 1",strong:"Make the contour bold and unmistakable, while still using lines only and keeping Image 1 as the primary artwork"};
+let has1=false,has2=false,paint="photo",contour="photo",opacity="clear",depth="same",strength="medium";
+function wireGroup(id,setter){const group=$(id);group.querySelectorAll(".opt").forEach(btn=>btn.addEventListener("click",()=>{group.querySelectorAll(".opt").forEach(x=>x.classList.remove("active"));btn.classList.add("active");setter(btn.dataset.key)}))}
+wireGroup("paintGroup",v=>paint=v);wireGroup("contourGroup",v=>contour=v);wireGroup("opacityGroup",v=>opacity=v);wireGroup("depthGroup",v=>depth=v);wireGroup("strengthGroup",v=>strength=v);
+function loadImage(fileInput,preview,empty,which){const file=fileInput.files&&fileInput.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{preview.src=reader.result;preview.hidden=false;empty.hidden=true;if(which===1)has1=true;else has2=true;updateReady()};reader.readAsDataURL(file)}
+$("file1").addEventListener("change",()=>loadImage($("file1"),$("preview1"),$("empty1"),1));$("file2").addEventListener("change",()=>loadImage($("file2"),$("preview2"),$("empty2"),2));
+function updateReady(){const ok=has1&&has2;$("makeBtn").disabled=!ok;$("ready").textContent=ok?"✓ 2枚そろった。生成できます。":""}
+function buildPrompt(){return ["Create one unified contemporary fine-art composition using exactly two image references.",`IMAGE 1 IS THE PRIMARY WORLD AND MAIN SUBJECT. ${paintProfiles[paint]}. Make this treatment visually obvious and decisive rather than a weak filter.`,"IMAGE 2 IS CONTOUR INFORMATION ONLY. Extract only its recognizable outer silhouette and a small number of important internal contour lines. Never render Image 2 as a complete filled subject, complete photograph, duplicate person, duplicate object, or separate pasted image.",`Render those Image 2 contour paths as ${contourProfiles[contour]}.`,`${opacityProfiles[opacity]}.`,`${depthProfiles[depth]}.`,`${strengthProfiles[strength]}.`,"The Image 2 treatment must stay localized to its contour paths. Do not spread its material or effect across the whole frame. Do not turn it into a global texture, full-screen overlay, ripple field, or background filter.","At first glance the viewer should mainly see the transformed artwork based on Image 1. On closer inspection, Image 2 should emerge through its contour lines and spatial placement.","Unify lighting, perspective, color relationships, and material interaction so the result feels intentionally created as one artwork rather than a collage.","No split screen, no collage panels, no obvious cut-and-paste edges, no duplicated subjects, no accidental text, no logo."].join(" ")}
+$("makeBtn").addEventListener("click",()=>{$("prompt").textContent=buildPrompt();$("copyBtn").disabled=false});
+$("copyBtn").addEventListener("click",async()=>{try{await navigator.clipboard.writeText($("prompt").textContent);const old=$("copyBtn").textContent;$("copyBtn").textContent="コピーしました";setTimeout(()=>$("copyBtn").textContent=old,1300)}catch{alert("長押しでプロンプトをコピーしてください。")}});
 })();
 </script>
 </body>
